@@ -7,7 +7,6 @@ import random
 from models import setup_db, Question, Category, db
 from sqlalchemy import func
 
-
 QUESTIONS_PER_PAGE = 10
 
 
@@ -16,9 +15,8 @@ def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
 
-    '''
-  @TODO: Set up CORS. Allow '*' for origins. Delete the sample route after completing the TODOs
-  '''
+    '''@TODO: Set up CORS. Allow '*' for origins. Delete the sample route 
+    after completing the TODOs '''
     cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     '''
@@ -27,8 +25,10 @@ def create_app(test_config=None):
 
     @app.after_request
     def after_request(response):
-        response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-        response.headers.add('Access-Control-Allow-Headers', 'GET, POST, PATCH, DELETE, OPTION')
+        response.headers.add('Access-Control-Allow-Headers',
+                             'Content-Type, Authorization')
+        response.headers.add('Access-Control-Allow-Headers',
+                             'GET, POST, PATCH, DELETE, OPTION')
         return response
 
     '''
@@ -56,11 +56,10 @@ def create_app(test_config=None):
   This endpoint should return a list of questions, 
   number of total questions, current category, categories. 
 
-  TEST: At this point, when you start the application
-  you should see questions and categories generated,
-  ten questions per page and pagination at the bottom of the screen for three pages.
-  Clicking on the page numbers should update the questions. 
-  '''
+  TEST: At this point, when you start the application you should see 
+  questions and categories generated, ten questions per page and pagination 
+  at the bottom of the screen for three pages. Clicking on the page numbers 
+  should update the questions. '''
 
     @cross_origin
     @app.route('/api/questions', methods=["GET"])
@@ -88,7 +87,8 @@ def create_app(test_config=None):
   This removal will persist in the database and when you refresh the page. 
   '''
 
-    # The 422 error is left there for when something is entered incorrectly to the db
+    # The 422 error is left there for when something is entered incorrectly
+    # to the db
     @cross_origin
     @app.route('/api/questions/<question_id>', methods=['DELETE'])
     def delete_question(question_id):
@@ -169,7 +169,8 @@ def create_app(test_config=None):
   Try using the word "title" to start. 
   '''
 
-    # allowed for users to receive no results if nothing exists their search entry (NOT 404)
+    # allowed for users to receive no results if nothing exists their search
+    # entry (NOT 404)
     @cross_origin
     @app.route('/api/questions/search', methods=['POST'])
     def question_search():
@@ -177,7 +178,8 @@ def create_app(test_config=None):
         try:
             data = request.get_json()
             db_search = Question.query.filter(
-                func.lower(Question.question).contains(func.lower(data['searchTerm']))).all()
+                func.lower(Question.question).contains(
+                    func.lower(data['searchTerm']))).all()
             paginated_results = paginate_questions(request, db_search)
         except:
             abort(422)
@@ -198,7 +200,8 @@ def create_app(test_config=None):
   category to be shown. 
   '''
 
-    # Intentionally allowed users to retreive categories with no questions (NO ERROR)
+    # Intentionally allowed users to retreive categories with no questions (
+    # NO ERROR)
     @cross_origin
     @app.route('/api/categories/<category_id>', methods=['GET'])
     def get_category_questions(category_id):
@@ -243,7 +246,8 @@ def create_app(test_config=None):
         except:
             abort(422)
         if category_id is not None:
-            db_questions = Question.query.filter_by(category=category_id).order_by(Question.id).all()
+            db_questions = Question.query.filter_by(
+                category=category_id).order_by(Question.id).all()
 
         else:
             db_questions = Question.query.all()
@@ -284,7 +288,8 @@ def create_app(test_config=None):
 
     def get_category_dict():
         db_categories = Category.query.order_by(Category.id).all()
-        # formatted_categories = [category.format() for category in db_categories]
+        # formatted_categories = [category.format() for category in
+        # db_categories]
 
         category_dict = {}
         for category in db_categories:
@@ -326,8 +331,8 @@ def create_app(test_config=None):
         return jsonify({
             'success': False,
             "error": 500,
-            'message': 'There is a bug in the system, sorry about that :< Please report the error at '
-                       'help@trivia.legit.com '
+            'message': 'There is a bug in the system, sorry about that :< '
+                       'Please report the error at help@trivia.legit.com'
         }), 500
 
     return app
