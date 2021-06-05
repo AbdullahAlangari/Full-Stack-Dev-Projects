@@ -3,9 +3,9 @@
 
 ## Full Stack Trivia
 
-Udacity is invested in creating bonding experiences for its employees and students. A bunch of team members got the idea to hold trivia on a regular basis and created a webpage to manage the trivia app and play the game, but their API experience is limited and still needs to be built out.
+This project is a trivia game for anyone that wishes to participate :> It gives you the option to add and remove questions from specific categories, play the game with one category or all categories, and getting questions related to a specific category. This is the second project in Udacity's Full Stack Web Development Nanodegree: Course 2: API Development and Documentation.
 
-That's where you come in! Help them finish the trivia app so they can start holding trivia and seeing who's the most knowledgeable of the bunch. The application must:
+The Application allows the user to:
 
 1. Display questions - both all questions and by category. Questions should show the question, category and difficulty rating by default and can show/hide the answer.
 2. Delete questions.
@@ -13,7 +13,8 @@ That's where you come in! Help them finish the trivia app so they can start hold
 4. Search for questions based on a text query string.
 5. Play the quiz game, randomizing either all questions or within a specific category.
 
-Completing this trivia app will give you the ability to structure plan, implement, and test an API - skills essential for enabling your future applications to communicate with others.
+
+all backend code follow [PEP8 Style guidelines](https://www.python.org/dev/peps/pep-0008/)
 
 ## Starting and Submitting the Project
 
