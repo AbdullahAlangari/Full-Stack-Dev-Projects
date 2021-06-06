@@ -362,6 +362,8 @@ Returns list of resulting question objects, a null currentCategory, success valu
                                                              
 * Sample: ```curl -X POST -H "Content-Type: application/json" -d '{"searchTerm":"what"}
 ' http://127.0.0.1:5000/api/questions/search```
+
+
 {
   "currentCategory": null,
   "questions": [
@@ -435,6 +437,8 @@ role of her beloved Lestat?"
 Returns list of resulting question objects, the type of the urrent category, success value and total number of questions.
                                                              
 * Sample: ```curl localhost:5000/api/categories/2```
+
+
 {
   "currentCategory": "Art",
   "questions": [
@@ -474,80 +478,6 @@ a leading exponent of action painting?"
 }
 
                                                              
-
-#### POST /api/questions/search
-* General:
-                                                             
-Returns list of resulting question objects, a null currentCategory, success value and total number of questions.
-                                                             
-* Sample: curl -X POST -H "Content-Type: application/json" -d '{"searchTerm":"what"}
-' http://127.0.0.1:5000/api/questions/search
-{
-  "currentCategory": null,
-  "questions": [
-    {
-      "answer": "Muhammad Ali",
-      "category": 4,
-      "difficulty": 1,
-      "id": 9,
-      "question": "What boxer's original name is Cassius Clay?"
-    },
-    {
-      "answer": "Apollo 13",
-      "category": 5,
-      "difficulty": 4,
-      "id": 2,
-      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in
- 1996?"
-    },
-    {
-      "answer": "Tom Cruise",
-      "category": 5,
-      "difficulty": 4,
-      "id": 4,
-      "question": "What actor did author Anne Rice first denounce, then praise in the
-role of her beloved Lestat?"
-    },
-    {
-      "answer": "Edward Scissorhands",
-      "category": 5,
-      "difficulty": 3,
-      "id": 6,
-      "question": "What was the title of the 1990 fantasy directed by Tim Burton about
- a young man with multi-bladed appendages?"
-    },
-    {
-      "answer": "Lake Victoria",
-      "category": 3,
-      "difficulty": 2,
-      "id": 13,
-      "question": "What is the largest lake in Africa?"
-    },
-    {
-      "answer": "Mona Lisa",
-      "category": 2,
-      "difficulty": 3,
-      "id": 17,
-      "question": "La Giaconda is better known as what?"
-    },
-    {
-      "answer": "The Liver",
-      "category": 1,
-      "difficulty": 4,
-      "id": 20,
-      "question": "What is the heaviest organ in the human body?"
-    },
-    {
-      "answer": "Blood",
-      "category": 1,
-      "difficulty": 4,
-      "id": 22,
-      "question": "Hematology is a branch of medicine involving the study of what?"
-    }
-  ],
-  "success": true,
-  "totalQuestions": 8
-}
                                                              
 #### POST /api/quizzes
                                                              
@@ -555,6 +485,8 @@ role of her beloved Lestat?"
 Returns a question which has not been previously asked by checking an input ```previous_questions``` and an optional quiz category 
                                                              
 * Sample: ```curl -X POST -H "Content-Type: application/json" -d '{"previous_questions" : [5,9], "quiz_category" : {"id":null, "type":null}}' http://127.0.0.1:5000/api/quizzes```
+
+
 {
   "question": {
     "answer": "Lake Victoria",
