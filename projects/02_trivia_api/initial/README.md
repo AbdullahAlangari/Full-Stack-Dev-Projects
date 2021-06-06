@@ -545,7 +545,7 @@ role of her beloved Lestat?"
 * General:
 Returns a question which has not been previously asked by checking an input <previous_Questions> and an optional quiz category 
                                                              
-* Sample: <curl -X POST -H "Content-Type: application/json" -d '{"previous_questions" : [5,9], "quiz_category" : {"id":null, "type":null}}' http://127.0.0.1:5000/api/quizzes>
+* Sample: < curl -X POST -H "Content-Type: application/json" -d '{"previous_questions" : [5,9], "quiz_category" : {"id":null, "type":null}}' http://127.0.0.1:5000/api/quizzes >
 {
   "question": {
     "answer": "Lake Victoria",
