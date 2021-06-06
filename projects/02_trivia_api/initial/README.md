@@ -16,38 +16,318 @@ The Application allows the user to:
 
 all backend code follow [PEP8 Style guidelines](https://www.python.org/dev/peps/pep-0008/)
 
-## Starting and Submitting the Project
+## Getting started
+Fork this project repository or download zip, then run the code in your favourite text editor (notes that this project uses Python3-Flask for backend and ReactJS for frontend)
 
-[Fork](https://help.github.com/en/articles/fork-a-repo) the [project repository](https://github.com/udacity/FSND/blob/master/projects/02_trivia_api/starter) and [Clone](https://help.github.com/en/articles/cloning-a-repository) your forked repository to your machine. Work on the project locally and make sure to push all your changes to the remote repository before submitting the link to your repository in the Classroom.
->Once you're ready, you can submit your project on the last page.
-
-## About the Stack
-
-We started the full stack application for you. It is designed with some key functional areas:
+### Prerequisites
+Developers using this project shoudl already have Python3, pip3, and node installed in their local machines
 
 ### Backend
-The [./backend](https://github.com/udacity/FSND/blob/master/projects/02_trivia_api/starter/backend/README.md) directory contains a partially completed Flask and SQLAlchemy server. You will work primarily in `__init__.py` to define your endpoints and can reference models.py for DB and SQLAlchemy setup. These are the files you'd want to edit in the backend:
+Navigate to the backend folder and run <pip3 install requirements.txt>, which includes all required packages
 
-1. *./backend/flaskr/`__init__.py`*
-2. *./backend/test_flaskr.py*
+  
+  
+To run the backend the first time run the following commands
+  <export FLASK_APP=flaskr
+   export FLASK_ENV=development
+   flask run>
 
+These command put the application in development and directs our application to use the <__init__.py> file in our flaskr folder, and runs flask in development mode which makes it so much easier to debug and test code by restarting the server whenever any chnages occur to the code, but remember to change the <FLASK_ENV> to production mode when the application is put to production
+
+    
+    
+After the initial setup, it is sufficient to run
+    <flask run>
+
+
+The application is run on localhost on <https://127.0.0.1:5000/> or <localhost:5000/>, which is a proxy in the frontend.
 
 ### Frontend
 
-The [./frontend](https://github.com/udacity/FSND/blob/master/projects/02_trivia_api/starter/frontend/README.md) directory contains a complete React frontend to consume the data from the Flask server. If you have prior experience building a frontend application, you should feel free to edit the endpoints as you see fit for the backend you design. If you do not have prior experience building a frontend application, you should read through the frontend code before starting and make notes regarding:
+  To run the frontend the first time, navigate to the frontend folder and run the following commands
+  <npm install
+   npm start>
+    
+    
+After the initial setup, it is sufficient to run
+    <npm start>
 
-1. What are the end points and HTTP methods the frontend is expecting to consume?
-2. How are the requests from the frontend formatted? Are they expecting certain parameters or payloads? 
-
-Pay special attention to what data the frontend is expecting from each API response to help guide how you format your API. The places where you may change the frontend behavior, and where you should be looking for the above information, are marked with `TODO`. These are the files you'd want to edit in the frontend:
-
-1. *./frontend/src/components/QuestionView.js*
-2. *./frontend/src/components/FormView.js*
-3. *./frontend/src/components/QuizView.js*
-
-
-By making notes ahead of time, you will practice the core skill of being able to read and understand code and will have a simple plan to follow to build out the endpoints of your backend API. 
+By default, the frontend will run on <localhost:3001>      
 
 
+##Tests
+In order to run tests navigate to the backend folder and run the following commands:
 
->View the [README within ./frontend for more details.](./frontend/README.md)
+<dropdb trivia_test
+createdb trivia_test
+psql trivia_test < trivia.psql
+python3 test_flaskr.py>
+      
+The first time you run the tests, omit the dropdb command.
+
+All tests are kept in <test_flaskr.py> and should be maintained and run as updates are made to app functionality.
+      
+##API References
+      
+##Getting Started
+Base URL: At present this app can only be run locally and is not hosted as a base URL. The backend app is hosted at the default, http://127.0.0.1:5000/, which is set as a proxy in the frontend configuration.
+      
+Authentication: This version of the application does not require authentication or API keys.
+###Error Handling
+      
+Errors are returned as JSON objects in the following format:
+{
+    "success": False, 
+    "error": 404,
+    "message": "Not Found"
+}
+The API will return three error types when requests fail:
+
+404: Not Found
+405: Method Not Allowed, Look up the documentation
+422: unprocessable
+500: There is a bug in the system, sorry about that :< Please report the error at help@trivia.legit.com
+                                                             
+###End Points
+
+#### GET /categories
+* General
+  Returns a list of category objects, success value, and total number of cateogories.
+                                                             
+                                                             
+* Sample: curl http://127.0.0.1:5000/categories
+{
+  "categories": {
+    "1": "Science",
+    "2": "Art",
+    "3": "Geography",
+    "4": "History",
+    "5": "Entertainment",
+    "6": "Sports"
+  },
+  "success": true,
+  "totalCategories": 6
+}
+
+                                                             
+#### GET /questions
+* General:
+                                                             
+Returns a list of question objects, category objects, current category (if applicable), success value, and total number of questions.
+                                                             
+Results are paginated in groups of 10. Request arguement can request specific pages, or be left empty for a default of page 1
+
+
+                                                           
+* Sample: curl http://127.0.0.1:5000/questions
+                                                             
+{
+  "categories": {
+    "1": "Science",
+    "2": "Art",
+    "3": "Geography",
+    "4": "History",
+    "5": "Entertainment",
+    "6": "Sports"
+  },
+  "currentCategory": null,
+  "questions": [
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 9,
+      "question": "What boxer's original name is Cassius Clay?"
+    },
+    {
+      "answer": "Apollo 13",
+      "category": 5,
+      "difficulty": 4,
+      "id": 2,
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    },
+    {
+      "answer": "Tom Cruise",
+      "category": 5,
+      "difficulty": 4,
+      "id": 4,
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    },
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 6,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Brazil",
+      "category": 6,
+      "difficulty": 3,
+      "id": 10,
+      "question": "Which is the only team to play in every soccer World Cup tournament?"
+    },
+    {
+      "answer": "Uruguay",
+      "category": 6,
+      "difficulty": 4,
+      "id": 11,
+      "question": "Which country won the first ever soccer World Cup in 1930?"
+    },
+    {
+      "answer": "George Washington Carver",
+      "category": 4,
+      "difficulty": 2,
+      "id": 12,
+      "question": "Who invented Peanut Butter?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 14,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    },
+    {
+      "answer": "Agra",
+      "category": 3,
+      "difficulty": 2,
+      "id": 15,
+      "question": "The Taj Mahal is located in which Indian city?"
+    }
+  ],
+  "success": true,
+  "totalQuestions": 22
+}
+(venv) klorex@DESKTOP-FUB9S81:~/full_stack_web/demos/FSND/projects/02_trivia_api/initial/backend$ curl localhost:5000/api/questions
+{
+  "categories": {
+    "1": "Science",
+    "2": "Art",
+    "3": "Geography",
+    "4": "History",
+    "5": "Entertainment",
+    "6": "Sports"
+  },
+  "currentCategory": null,
+  "questions": [
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 9,
+      "question": "What boxer's original name is Cassius Clay?"
+    },
+    {
+      "answer": "Apollo 13",
+      "category": 5,
+      "difficulty": 4,
+      "id": 2,
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    },
+    {
+      "answer": "Tom Cruise",
+      "category": 5,
+      "difficulty": 4,
+      "id": 4,
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    },
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 6,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Brazil",
+      "category": 6,
+      "difficulty": 3,
+      "id": 10,
+      "question": "Which is the only team to play in every soccer World Cup tournament?"
+    },
+    {
+      "answer": "Uruguay",
+      "category": 6,
+      "difficulty": 4,
+      "id": 11,
+      "question": "Which country won the first ever soccer World Cup in 1930?"
+    },
+    {
+      "answer": "George Washington Carver",
+      "category": 4,
+      "difficulty": 2,
+      "id": 12,
+      "question": "Who invented Peanut Butter?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 14,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    },
+    {
+      "answer": "Agra",
+      "category": 3,
+      "difficulty": 2,
+      "id": 15,
+      "question": "The Taj Mahal is located in which Indian city?"
+    }
+  ],
+  "success": true,
+  "totalQuestions": 22
+}
+
+#### DELETE /questions/{question_id}
+* General:
+                                                             
+Returns a the deleted question id, the current list of question ids, the total number of questions, and the success value.
+                                                             
+* Sample: curl -X DELETE localhost:5000/api/questions/11
+
+                                                             
+{
+  "deleted": "11",
+  "questions": [
+    9,
+    2,
+    4,
+    6,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    25,
+    26,
+    27,
+    28
+  ],
+  "success": true,
+  "total_questions": 21
+}
+
+                                                             
