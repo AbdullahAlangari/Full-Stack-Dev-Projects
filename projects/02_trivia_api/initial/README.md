@@ -23,7 +23,7 @@ Fork this project repository or download zip, then run the code in your favourit
 Developers using this project shoudl already have Python3, pip3, and node installed in their local machines
 
 ### Backend
-Navigate to the backend folder and run <pip3 install requirements.txt>, which includes all required packages
+Navigate to the backend folder and run '''pip3 install requirements.txt''', which includes all required packages
 
   
   
