@@ -48,8 +48,10 @@ The application is run on localhost on ```https://127.0.0.1:5000/``` or ```local
 ### Frontend
 
   To run the frontend the first time, navigate to the frontend folder and run the following commands
-  ```npm install
-   npm start```
+  ```
+  npm install
+  npm start
+  ```
     
     
 After the initial setup, it is sufficient to run
