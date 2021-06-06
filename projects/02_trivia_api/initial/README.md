@@ -82,11 +82,13 @@ Authentication: This version of the application does not require authentication 
 ### Error Handling
       
 Errors are returned as JSON objects in the following format:
+```
 {
     "success": False, 
     "error": 404,
     "message": "Not Found"
 }
+```
 The API will return three error types when requests fail:
 
 404: Not Found
@@ -101,7 +103,8 @@ The API will return three error types when requests fail:
   Returns a list of category objects, success value, and total number of cateogories.
                                                              
                                                              
-* Sample: curl http://127.0.0.1:5000/categories
+* Sample: ```curl http://127.0.0.1:5000/categories```
+
 {
   "categories": {
     "1": "Science",
@@ -125,7 +128,7 @@ Results are paginated in groups of 10. Request arguement can request specific pa
 
 
                                                            
-* Sample: curl http://127.0.0.1:5000/api/questions
+* Sample: ```curl http://127.0.0.1:5000/api/questions```
                                                              
 {
   "categories": {
@@ -304,7 +307,7 @@ Results are paginated in groups of 10. Request arguement can request specific pa
                                                              
 Returns a the deleted question id, the current list of question ids, the total number of questions, and the success value.
                                                              
-* Sample: curl -X DELETE localhost:5000/api/questions/11
+* Sample: ```curl -X DELETE localhost:5000/api/questions/11```
 
                                                              
 {
@@ -343,9 +346,9 @@ Returns a the deleted question id, the current list of question ids, the total n
                                                              
 Returns success value of POST request.
                                                              
-* Sample: curl -X POST -H "Content-Type: application/json" -d '{"question": "This is
+* Sample: ```curl -X POST -H "Content-Type: application/json" -d '{"question": "This is
  a qusestion of your choice","answer": "The corerct answer", "difficulty":"4", "catego
-ry":"5"}' http://127.0.0.1:5000/api/questions
+ry":"5"}' http://127.0.0.1:5000/api/questions```
                                                              
                                                              
 {
@@ -357,8 +360,8 @@ ry":"5"}' http://127.0.0.1:5000/api/questions
                                                              
 Returns list of resulting question objects, a null currentCategory, success value and total number of questions.
                                                              
-* Sample: curl -X POST -H "Content-Type: application/json" -d '{"searchTerm":"what"}
-' http://127.0.0.1:5000/api/questions/search
+* Sample: ```curl -X POST -H "Content-Type: application/json" -d '{"searchTerm":"what"}
+' http://127.0.0.1:5000/api/questions/search```
 {
   "currentCategory": null,
   "questions": [
@@ -431,7 +434,7 @@ role of her beloved Lestat?"
 * General:
 Returns list of resulting question objects, the type of the urrent category, success value and total number of questions.
                                                              
-* Sample: curl localhost:5000/api/categories/2
+* Sample: ```curl localhost:5000/api/categories/2```
 {
   "currentCategory": "Art",
   "questions": [
