@@ -28,44 +28,48 @@ Navigate to the backend folder and run ```pip3 install requirements.txt```, whic
   
   
 To run the backend the first time run the following commands
-  <export FLASK_APP=flaskr
+   ```
+   export FLASK_APP=flaskr
    export FLASK_ENV=development
-   flask run>
+   flask run
+   ```
 
-These command put the application in development and directs our application to use the <__init__.py> file in our flaskr folder, and runs flask in development mode which makes it so much easier to debug and test code by restarting the server whenever any chnages occur to the code, but remember to change the <FLASK_ENV> to production mode when the application is put to production
+These command put the application in development and directs our application to use the 
+__init__.py> file in our flaskr folder, and runs flask in development mode which makes it so much easier to debug and test code by restarting the server whenever any chnages occur to the code, but remember to change the ```FLASK_ENV``` to production mode when the application is put to production
 
     
     
 After the initial setup, it is sufficient to run
-    <flask run>
+    ```flask run```
 
 
-The application is run on localhost on <https://127.0.0.1:5000/> or <localhost:5000/>, which is a proxy in the frontend.
+The application is run on localhost on ```https://127.0.0.1:5000/``` or ```localhost:5000/```, which is a proxy in the frontend.
 
 ### Frontend
 
   To run the frontend the first time, navigate to the frontend folder and run the following commands
-  <npm install
-   npm start>
+  ```npm install
+   npm start```
     
     
 After the initial setup, it is sufficient to run
-    <npm start>
+    ```npm start```
 
-By default, the frontend will run on <localhost:3001>      
+By default, the frontend will run on ```localhost:3001```     
 
 
 ## Tests
 In order to run tests navigate to the backend folder and run the following commands:
-
-<dropdb trivia_test
+```
+dropdb trivia_test
 createdb trivia_test
 psql trivia_test < trivia.psql
-python3 test_flaskr.py>
+python3 test_flaskr.py
+```
       
 The first time you run the tests, omit the dropdb command.
 
-All tests are kept in <test_flaskr.py> and should be maintained and run as updates are made to app functionality.
+All tests are kept in ```test_flaskr.py``` and should be maintained and run as updates are made to app functionality.
       
 ## API References
       
@@ -543,9 +547,9 @@ role of her beloved Lestat?"
 #### POST /api/quizzes
                                                              
 * General:
-Returns a question which has not been previously asked by checking an input <previous_Questions> and an optional quiz category 
+Returns a question which has not been previously asked by checking an input ```previous_questions``` and an optional quiz category 
                                                              
-* Sample: < curl -X POST -H "Content-Type: application/json" -d '{"previous_questions" : [5,9], "quiz_category" : {"id":null, "type":null}}' http://127.0.0.1:5000/api/quizzes >
+* Sample: ```curl -X POST -H "Content-Type: application/json" -d '{"previous_questions" : [5,9], "quiz_category" : {"id":null, "type":null}}' http://127.0.0.1:5000/api/quizzes```
 {
   "question": {
     "answer": "Lake Victoria",
