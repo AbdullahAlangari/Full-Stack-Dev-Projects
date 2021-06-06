@@ -90,7 +90,7 @@ The API will return three error types when requests fail:
                                                              
 ###End Points
 
-#### GET /categories
+#### GET /api/categories
 * General
   Returns a list of category objects, success value, and total number of cateogories.
                                                              
@@ -119,7 +119,7 @@ Results are paginated in groups of 10. Request arguement can request specific pa
 
 
                                                            
-* Sample: curl http://127.0.0.1:5000/questions
+* Sample: curl http://127.0.0.1:5000/api/questions
                                                              
 {
   "categories": {
@@ -330,4 +330,231 @@ Returns a the deleted question id, the current list of question ids, the total n
   "total_questions": 21
 }
 
+
+         
+#### POST /api/questions
+* General:
                                                              
+Returns success value of POST request.
+                                                             
+* Sample: curl -X POST -H "Content-Type: application/json" -d '{"question": "This is
+ a qusestion of your choice","answer": "The corerct answer", "difficulty":"4", "catego
+ry":"5"}' http://127.0.0.1:5000/api/questions
+                                                             
+                                                             
+{
+  "success": true
+}
+ 
+#### POST /api/questions/search
+* General:
+                                                             
+Returns list of resulting question objects, a null currentCategory, success value and total number of questions.
+                                                             
+* Sample: curl -X POST -H "Content-Type: application/json" -d '{"searchTerm":"what"}
+' http://127.0.0.1:5000/api/questions/search
+{
+  "currentCategory": null,
+  "questions": [
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 9,
+      "question": "What boxer's original name is Cassius Clay?"
+    },
+    {
+      "answer": "Apollo 13",
+      "category": 5,
+      "difficulty": 4,
+      "id": 2,
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in
+ 1996?"
+    },
+    {
+      "answer": "Tom Cruise",
+      "category": 5,
+      "difficulty": 4,
+      "id": 4,
+      "question": "What actor did author Anne Rice first denounce, then praise in the
+role of her beloved Lestat?"
+    },
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 6,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about
+ a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "Mona Lisa",
+      "category": 2,
+      "difficulty": 3,
+      "id": 17,
+      "question": "La Giaconda is better known as what?"
+    },
+    {
+      "answer": "The Liver",
+      "category": 1,
+      "difficulty": 4,
+      "id": 20,
+      "question": "What is the heaviest organ in the human body?"
+    },
+    {
+      "answer": "Blood",
+      "category": 1,
+      "difficulty": 4,
+      "id": 22,
+      "question": "Hematology is a branch of medicine involving the study of what?"
+    }
+  ],
+  "success": true,
+  "totalQuestions": 8
+}
+                                                             
+#### GET /api/categories/{category_id}
+                                                             
+* General:
+Returns list of resulting question objects, the type of the urrent category, success value and total number of questions.
+                                                             
+* Sample: curl localhost:5000/api/categories/2
+{
+  "currentCategory": "Art",
+  "questions": [
+    {
+      "answer": "Escher",
+      "category": 2,
+      "difficulty": 1,
+      "id": 16,
+      "question": "Which Dutch graphic artist\u2013initials M C was a creator of optic
+al illusions?"
+    },
+    {
+      "answer": "Mona Lisa",
+      "category": 2,
+      "difficulty": 3,
+      "id": 17,
+      "question": "La Giaconda is better known as what?"
+    },
+    {
+      "answer": "One",
+      "category": 2,
+      "difficulty": 4,
+      "id": 18,
+      "question": "How many paintings did Van Gogh sell in his lifetime?"
+    },
+    {
+      "answer": "Jackson Pollock",
+      "category": 2,
+      "difficulty": 2,
+      "id": 19,
+      "question": "Which American artist was a pioneer of Abstract Expressionism, and
+a leading exponent of action painting?"
+    }
+  ],
+  "success": true,
+  "totalQuestions": 4
+}
+
+                                                             
+
+#### POST /api/questions/search
+* General:
+                                                             
+Returns list of resulting question objects, a null currentCategory, success value and total number of questions.
+                                                             
+* Sample: curl -X POST -H "Content-Type: application/json" -d '{"searchTerm":"what"}
+' http://127.0.0.1:5000/api/questions/search
+{
+  "currentCategory": null,
+  "questions": [
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 9,
+      "question": "What boxer's original name is Cassius Clay?"
+    },
+    {
+      "answer": "Apollo 13",
+      "category": 5,
+      "difficulty": 4,
+      "id": 2,
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in
+ 1996?"
+    },
+    {
+      "answer": "Tom Cruise",
+      "category": 5,
+      "difficulty": 4,
+      "id": 4,
+      "question": "What actor did author Anne Rice first denounce, then praise in the
+role of her beloved Lestat?"
+    },
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 6,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about
+ a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "Mona Lisa",
+      "category": 2,
+      "difficulty": 3,
+      "id": 17,
+      "question": "La Giaconda is better known as what?"
+    },
+    {
+      "answer": "The Liver",
+      "category": 1,
+      "difficulty": 4,
+      "id": 20,
+      "question": "What is the heaviest organ in the human body?"
+    },
+    {
+      "answer": "Blood",
+      "category": 1,
+      "difficulty": 4,
+      "id": 22,
+      "question": "Hematology is a branch of medicine involving the study of what?"
+    }
+  ],
+  "success": true,
+  "totalQuestions": 8
+}
+                                                             
+#### POST /api/quizzes
+                                                             
+* General:
+Returns a question which has not been previously asked by checking an input <previous_Questions> and an optional quiz category 
+                                                             
+* Sample: <curl -X POST -H "Content-Type: application/json" -d '{"previous_questions" : [5,9], "quiz_category" : {"id":null, "type":null}}' http://127.0.0.1:5000/api/quizze
+s>
+{
+  "question": {
+    "answer": "Lake Victoria",
+    "category": 3,
+    "difficulty": 2,
+    "id": 13,
+    "question": "What is the largest lake in Africa?"
+  },
+  "success": true
+}
+
