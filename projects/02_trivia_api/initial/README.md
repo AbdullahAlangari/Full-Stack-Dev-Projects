@@ -55,7 +55,7 @@ After the initial setup, it is sufficient to run
 By default, the frontend will run on <localhost:3001>      
 
 
-##Tests
+## Tests
 In order to run tests navigate to the backend folder and run the following commands:
 
 <dropdb trivia_test
@@ -67,13 +67,13 @@ The first time you run the tests, omit the dropdb command.
 
 All tests are kept in <test_flaskr.py> and should be maintained and run as updates are made to app functionality.
       
-##API References
+## API References
       
-##Getting Started
+## Getting Started
 Base URL: At present this app can only be run locally and is not hosted as a base URL. The backend app is hosted at the default, http://127.0.0.1:5000/, which is set as a proxy in the frontend configuration.
       
 Authentication: This version of the application does not require authentication or API keys.
-###Error Handling
+### Error Handling
       
 Errors are returned as JSON objects in the following format:
 {
@@ -88,7 +88,7 @@ The API will return three error types when requests fail:
 422: unprocessable
 500: There is a bug in the system, sorry about that :< Please report the error at help@trivia.legit.com
                                                              
-###End Points
+### End Points
 
 #### GET /api/categories
 * General
